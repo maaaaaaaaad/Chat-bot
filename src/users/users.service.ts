@@ -24,20 +24,21 @@ export class UsersService implements UsersInterface {
     email,
     password,
   }: UsersRegisterInputDto): Promise<UsersRegisterOutputDto> {
-    let user = await this.usersRepository.findOne({
-      where: { email },
-      select: { email: true },
-    });
+    let user = await this.usersRepository.findOneBy({ email });
     if (user) throw new ConflictException('email');
     const queryRunner = await this.dataSource.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
-    user = await this.usersRepository.create({ email, password });
+    user = this.usersRepository.create({ email, password });
     try {
       await this.dataSource.getRepository(UsersEntity).insert(user);
       await queryRunner.commitTransaction();
       return {
-        data: user,
+        data: {
+          id: user.id,
+          email: user.email,
+          createAt: user.createAt,
+        },
       };
     } catch (e) {
       await queryRunner.rollbackTransaction();

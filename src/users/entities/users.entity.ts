@@ -6,18 +6,18 @@ import { Exclude } from 'class-transformer';
 @Entity({ name: 'USERS' })
 @Index(['email'])
 export class UsersEntity extends RootEntity {
-  @Column({ unique: true })
+  @Column()
   @IsEmail()
   @IsNotEmpty()
   email: string;
 
-  @Column()
+  @Column({ select: false })
   @IsString()
   @IsNotEmpty()
   @Exclude()
   password: string;
 
-  @Column({ default: null, nullable: true })
+  @Column({ default: null, nullable: true, select: false })
   @Exclude()
   refreshToken: string | null;
 }

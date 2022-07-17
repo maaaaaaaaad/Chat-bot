@@ -21,7 +21,7 @@ export class RootEntity extends BaseEntity {
   @IsDate()
   updateAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ select: false })
   @IsDate()
   deleteAt: Date;
 }
