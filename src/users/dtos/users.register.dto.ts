@@ -7,4 +7,4 @@ export class UsersRegisterInputDto extends PickType(UsersEntity, [
   'password',
 ]) {}
 
-export class UserRegisterOutputDto extends BaseOutputDto<UsersEntity> {}
+export class UsersRegisterOutputDto extends BaseOutputDto<UsersEntity> {}

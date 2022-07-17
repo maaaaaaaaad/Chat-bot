@@ -8,7 +8,7 @@ import { UsersEntity } from './entities/users.entity';
 import { DataSource, Repository } from 'typeorm';
 import { UsersInterface } from './interfaces/users.interface';
 import {
-  UserRegisterOutputDto,
+  UsersRegisterOutputDto,
   UsersRegisterInputDto,
 } from './dtos/users.register.dto';
 
@@ -23,7 +23,7 @@ export class UsersService implements UsersInterface {
   async register({
     email,
     password,
-  }: UsersRegisterInputDto): Promise<UserRegisterOutputDto> {
+  }: UsersRegisterInputDto): Promise<UsersRegisterOutputDto> {
     let user = await this.usersRepository.findOne({
       where: { email },
       select: { email: true },

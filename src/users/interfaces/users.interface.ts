@@ -1,10 +1,10 @@
 import {
   UsersRegisterInputDto,
-  UsersRegisterOutputDtoType,
+  UsersRegisterOutputDto,
 } from '../dtos/users.register.dto';
 
 export interface UsersInterface {
   readonly register: (
     usersRegisterInputDto: UsersRegisterInputDto,
-  ) => Promise<UsersRegisterOutputDtoType>;
+  ) => Promise<UsersRegisterOutputDto>;
 }
