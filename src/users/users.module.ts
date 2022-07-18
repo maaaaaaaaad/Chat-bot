@@ -13,5 +13,11 @@ import { UsersEntity } from './entities/users.entity';
       useClass: UsersService,
     },
   ],
+  exports: [
+    {
+      provide: 'USER_SERVICE',
+      useClass: UsersService,
+    },
+  ],
 })
 export class UsersModule {}

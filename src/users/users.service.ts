@@ -47,4 +47,8 @@ export class UsersService implements UsersInterface {
       await queryRunner.release();
     }
   }
+
+  async findByPrimaryKey(id: number): Promise<UsersEntity | undefined> {
+    return await this.usersRepository.findOneBy({ id });
+  }
 }
