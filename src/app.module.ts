@@ -21,6 +21,8 @@ import { AuthModule } from './auth/auth.module';
         REDIS_HOST: Joi.string().required(),
         REDIS_PORT: Joi.number().required(),
         JWT_SECRET_KEY: Joi.string().required(),
+        JWT_ACCESS_TOKEN_KEY: Joi.string().required(),
+        JWT_REFRESH_TOKEN_KEY: Joi.string().required(),
       }),
     }),
     TypeOrmModule.forRootAsync({
