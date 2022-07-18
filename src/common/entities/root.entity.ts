@@ -9,13 +9,13 @@ import {
 import { IsDate } from 'class-validator';
 
 @Entity({ name: 'ROOT' })
-export class RootEntity extends BaseEntity {
+export abstract class RootEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  readonly id: number;
 
   @CreateDateColumn()
   @IsDate()
-  createAt: Date;
+  readonly createAt: Date;
 
   @UpdateDateColumn()
   @IsDate()
